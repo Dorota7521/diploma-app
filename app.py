@@ -5,7 +5,6 @@ from time import sleep
 import psutil
 import threading
 import os
-import subprocess
 from algorithms.aes import encrypt_aes
 
 app = Flask(__name__)
@@ -25,10 +24,12 @@ def monitor_progress():
             # Aktualizuj paski postępu na podstawie obciążenia CPU i pamięci RAM procesu
             cpubar.n = process.cpu_percent()
             rambar.n = process.memory_percent()
+            io_counters = process.io_counters()
 
             # Informacje o dysku
-            disk_usage = psutil.disk_usage('/')
-            diskbar.n = disk_usage.percent
+            disk_usage_bytes = io_counters.write_bytes + io_counters.read_bytes
+            disk_usage_mb = disk_usage_bytes / (1024 ** 2)
+            diskbar.n = disk_usage_mb
 
             socketio.emit('update_progress', {'cpu': cpubar.n, 'ram': rambar.n, 'disk': diskbar.n}, namespace='/test')
 
@@ -64,16 +65,3 @@ if __name__ == '__main__':
 
     # Uruchom serwer Flask-SocketIO
     socketio.run(app, debug=True)
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,5 +1,5 @@
 plaintext = b'This is a secret message.'
-file_size = 200* 1024 * 1024  # 500 MB
+file_size = 500* 1024 * 1024  # 500 MB
 
 # Obliczanie liczby kopii wiadomości potrzebnych do uzyskania żądanego rozmiaru pliku
 num_copies = (file_size // len(plaintext)) + 1

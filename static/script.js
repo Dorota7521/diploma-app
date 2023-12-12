@@ -1,4 +1,3 @@
-// static/script.js
 
 document.addEventListener('DOMContentLoaded', function() {
     var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'CPU Usage',
                 data: Array(initialDataPoints).fill(0),
-                borderColor: '#3498db',
+                borderColor: '#3498db',  // Niebieski
                 borderWidth: 2,
                 fill: false
             }]
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'RAM Usage',
                 data: Array(initialDataPoints).fill(0),
-                borderColor: '#e74c3c',
+                borderColor: '#e74c3c',  // Czerwony
                 borderWidth: 2,
                 fill: false
             }]
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'Disk Usage',
                 data: Array(initialDataPoints).fill(0),
-                borderColor: '#8e44ad',
+                borderColor: '#8e44ad',  // Fioletowy
                 borderWidth: 2,
                 fill: false
             }]
@@ -93,20 +92,38 @@ document.addEventListener('DOMContentLoaded', function() {
         diskChart.data.datasets[0].data.push(data.disk);
 
         // Limit the number of data points displayed to 20 for better performance
-        var maxDataPoints = 100;
-        if (cpuChart.data.labels.length > maxDataPoints) {
-            cpuChart.data.labels.shift();
-            ramChart.data.labels.shift();
-            diskChart.data.labels.shift();
-            cpuChart.data.datasets[0].data.shift();
-            ramChart.data.datasets[0].data.shift();
-            diskChart.data.datasets[0].data.shift();
-        }
+        // var maxDataPoints = 100;
+        // if (cpuChart.data.labels.length > maxDataPoints) {
+        //     cpuChart.data.labels.shift();
+        //     ramChart.data.labels.shift();
+        //     diskChart.data.labels.shift();
+        //     cpuChart.data.datasets[0].data.shift();
+        //     ramChart.data.datasets[0].data.shift();
+        //     diskChart.data.datasets[0].data.shift();
+        // }
 
         cpuChart.update();
         ramChart.update();
         diskChart.update();
-    };
 
+        // Odczytaj min i max wartości z wykresów
+        var cpuMin = Math.min(...cpuChart.data.datasets[0].data);
+        var cpuMax = Math.max(...cpuChart.data.datasets[0].data);
+        var ramMin = Math.min(...ramChart.data.datasets[0].data);
+        var ramMax = Math.max(...ramChart.data.datasets[0].data);
+        var diskMin = Math.min(...diskChart.data.datasets[0].data);
+        var diskMax = Math.max(...diskChart.data.datasets[0].data);
+
+        // Policz różnice
+        var cpuDiff = cpuMax - cpuMin;
+        var ramDiff = ramMax - ramMin;
+        var diskDiff = diskMax - diskMin;
+
+        // Wyświetl różnice obok wykresów
+        document.getElementById('cpu-diff').innerText = 'CPU Diff: ' + cpuDiff.toFixed(2);
+        document.getElementById('ram-diff').innerText = 'RAM Diff: ' + ramDiff.toFixed(2);
+        document.getElementById('disk-diff').innerText = 'Disk Diff: ' + diskDiff.toFixed(2);
+    };
     socket.on('update_progress', updateCharts);
 });
+
