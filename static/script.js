@@ -24,10 +24,18 @@ document.addEventListener("DOMContentLoaded", function () {
         x: {
           type: "linear",
           position: "bottom",
+          title: {
+            display: true,
+            text: "CPU Usage (%)",
+          },
         },
         y: {
           beginAtZero: true,
           max: 100,
+          title: {
+            display: true,
+            text: "Czas (sekundy)",
+          },
         },
       },
     },
@@ -52,10 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
         x: {
           type: "linear",
           position: "bottom",
+          title: {
+            display: true,
+            text: "Czas (sekundy)",
+          },
         },
         y: {
           beginAtZero: true,
           max: 100,
+          title: {
+            display: true,
+            text: "CPU Usage (%)",
+          },
         },
       },
     },
@@ -80,10 +96,18 @@ document.addEventListener("DOMContentLoaded", function () {
         x: {
           type: "linear",
           position: "bottom",
+          title: {
+            display: true,
+            text: "Czas (sekundy)",
+          },
         },
         y: {
           beginAtZero: true,
           max: 100,
+          title: {
+            display: true,
+            text: "CPU Usage (%)",
+          },
         },
       },
     },

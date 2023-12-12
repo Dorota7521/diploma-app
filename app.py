@@ -21,7 +21,7 @@ def monitor_progress():
         while True:
             # Pobierz informacje o procesie o określonym PID
             process = psutil.Process(target_pid)
-            
+
             # Aktualizuj paski postępu na podstawie obciążenia CPU i pamięci RAM procesu
             cpubar.n = process.cpu_percent()
             rambar.n = process.memory_percent()
