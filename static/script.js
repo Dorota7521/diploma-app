@@ -138,9 +138,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var diskDiff = diskMax - diskMin;
 
     // Wyświetl różnice obok wykresów
-    document.getElementById("cpu-diff").innerText = "CPU Diff: " + cpuDiff.toFixed(2) + " %";
-    document.getElementById("ram-diff").innerText = "RAM Diff: " + ramDiff.toFixed(2) + " %";
-    document.getElementById("disk-diff").innerText = "Disk Diff: " + diskDiff.toFixed(2) + " %";
+    document.getElementById("cpu-diff").innerText = "Zużycie CPU wzrosło o: " + cpuDiff.toFixed(2) + "%";
+    document.getElementById("ram-diff").innerText = "Zużycie pamięci RAM wzrosło o: " + ramDiff.toFixed(2) + "%";
+    document.getElementById("disk-diff").innerText = "Zużycie Dysku wzrosło o " + diskDiff.toFixed(2) + "%";
   };
   socket.on("update_progress", updateCharts);
 });
