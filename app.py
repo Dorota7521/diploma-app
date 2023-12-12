@@ -22,14 +22,12 @@ def monitor_progress():
             process = psutil.Process(target_pid)
             
             # Aktualizuj paski postępu na podstawie obciążenia CPU i pamięci RAM procesu
-            cpubar.n = process.cpu_percent()
+            cpubar.n = process.cpu_percent(interval=0.5)
             rambar.n = process.memory_percent()
-            io_counters = process.io_counters()
 
             # Informacje o dysku
-            disk_usage_bytes = io_counters.write_bytes + io_counters.read_bytes
-            disk_usage_mb = disk_usage_bytes / (1024 ** 2)
-            diskbar.n = disk_usage_mb
+            disk_usage = psutil.disk_usage('/')
+            diskbar.n = disk_usage.percent
 
             socketio.emit('update_progress', {'cpu': cpubar.n, 'ram': rambar.n, 'disk': diskbar.n}, namespace='/test')
 
