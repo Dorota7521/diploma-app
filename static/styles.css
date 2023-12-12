@@ -1,27 +1,38 @@
-/* Styl dla wyników różnic */
-#cpu-diff, #ram-diff, #disk-diff {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    font-size: 14px;
+/* static/styles.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Dodatkowe style dla lepszej czytelności */
-#cpu-diff {
-    color: #3498db;  /* Niebieski */
+/* Body styles */
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 2rem;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
 }
 
-#ram-diff {
-    color: #e74c3c;  /* Czerwony */
+/* Container styles */
+.container {
+  width: 80%;
+  margin: auto;
 }
 
-#disk-diff {
-    color: #8e44ad;  /* Fioletowy */
+/* Progress chart styles */
+.progress-chart {
+  padding: 1rem;
+  margin: 2rem 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 4px;
 }
 
-
-
-
-
+/* Additional styles for each progress chart */
+#cpu-chart-container label,
+#ram-chart-container label,
+#disk-chart-container label {
+  display: block;
+  margin-bottom: 5px;
+}
