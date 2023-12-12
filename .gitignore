@@ -1,0 +1,5 @@
+# Ignoruj pliki o nazwie secret_message i dowolnym rozszerzeniu
+secret_message.*
+
+# Ignoruj katalogi __pycache__
+__pycache__/
