@@ -1,0 +1,30 @@
+/* static/styles.css */
+
+/* Body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styles */
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* Progress chart styles */
+.progress-chart {
+    margin-top: 20px;
+}
+
+/* Additional styles for each progress chart */
+#cpu-chart-container label, #ram-chart-container label, #disk-chart-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+
+
