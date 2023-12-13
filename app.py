@@ -6,6 +6,8 @@ import psutil
 import threading
 import os
 from algorithms.aes import encrypt_aes
+from algorithms.rsa import generate_rsa_keypair, save_rsa_key_to_file, load_rsa_key_from_file, encrypt_rsa
+from time import sleep
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -39,9 +41,22 @@ def monitor_progress():
 def start_another_app():
     # Uruchom inną aplikację Pythona po 5 sekundach
     sleep(5)
+    # aplikacja szyfrująca aes.py
     key = b'sixteen_byte_key'  # 128-bit key for AES-128
-    plik = 'secret_message.txt'
-    encrypt_aes(key, plik)
+    plik = 'secret_message.txt' #plik do zaszyfrowania
+    encrypt_aes(key, plik)  
+
+    #aplikacja szyfrująca rsa.py
+    private_key_file = 'private_key.pem'
+    if not os.path.exists(private_key_file):
+        private_key, public_key = generate_rsa_keypair()
+        save_rsa_key_to_file(private_key, private_key_file, password=b'MySecurePassword')
+        save_rsa_key_to_file(public_key, 'public_key.pem')
+
+    # Wczytaj klucz prywatny
+    loaded_private_key = load_rsa_key_from_file(private_key_file, password=b'MySecurePassword')
+
+    encrypt_rsa(loaded_private_key, plik)    
     sleep(5)
 
 @app.route('/')

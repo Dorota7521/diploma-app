@@ -1,5 +1,6 @@
 # Ignoruj pliki o nazwie secret_message i dowolnym rozszerzeniu
 secret_message.*
+*.pem
 
 # Ignoruj katalogi __pycache__
 __pycache__/
