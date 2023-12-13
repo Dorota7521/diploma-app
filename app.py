@@ -7,7 +7,7 @@ import threading
 import os
 from algorithms.aes import encrypt_aes
 from algorithms.rsa import generate_rsa_keypair, save_rsa_key_to_file, load_rsa_key_from_file, encrypt_rsa
-from time import sleep
+from algorithms.chacha20 import encrypt_chacha20
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -41,8 +41,9 @@ def monitor_progress():
 def start_another_app():
     # Uruchom inną aplikację Pythona po 5 sekundach
     sleep(5)
+
     # aplikacja szyfrująca aes.py
-    key = b'sixteen_byte_key'  # 128-bit key for AES-128
+    key = os.urandom(32)
     plik = 'secret_message.txt' #plik do zaszyfrowania
     encrypt_aes(key, plik)  
 
@@ -53,10 +54,15 @@ def start_another_app():
         save_rsa_key_to_file(private_key, private_key_file, password=b'MySecurePassword')
         save_rsa_key_to_file(public_key, 'public_key.pem')
 
-    # Wczytaj klucz prywatny
+    # # Wczytaj klucz prywatny
     loaded_private_key = load_rsa_key_from_file(private_key_file, password=b'MySecurePassword')
 
     encrypt_rsa(loaded_private_key, plik)    
+
+    #aplikacja szyfrująca chacha20
+    encrypt_chacha20(key, plik)
+    
+    
     sleep(5)
 
 @app.route('/')
