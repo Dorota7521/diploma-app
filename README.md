@@ -33,7 +33,8 @@ Then, navigate to the website http://localhost:5000.
 
 On the webpage, you will see the results of CPU, Memory, and Disk usage, along with information on the percentage increase.
 
-### Virtual Machines - ewentualnie ansible, ale raczej wątpię xD
+### Virtual Machines
+ewentualnie ansible, ale raczej wątpię xD
 
 ### Docker and docker-compose
 tutaj coś o puszczeniu tym jak są zbudowane Dockerfaile i co się dzieje w pliku .yml, jakie boblioteki są instalowane (requirments.txt)
