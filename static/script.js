@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
           label: "CPU Usage",
           data: Array(initialDataPoints).fill(0),
-          borderColor: "#3498db", // Niebieski
+          borderColor: "#3498db", // Blue
           borderWidth: 2,
           fill: false,
         },
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
           position: "bottom",
           title: {
             display: true,
-            text: "Czas (sekundy)",
+            text: "Time (seconds)",
           },
         },
         y: {
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
           label: "RAM Usage",
           data: Array(initialDataPoints).fill(0),
-          borderColor: "#e74c3c", // Czerwony
+          borderColor: "#e74c3c", // Red
           borderWidth: 2,
           fill: false,
         },
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
           position: "bottom",
           title: {
             display: true,
-            text: "Czas (sekundy)",
+            text: "Time (seconds)",
           },
         },
         y: {
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
           label: "Disk Usage",
           data: Array(initialDataPoints).fill(0),
-          borderColor: "#8e44ad", // Fioletowy
+          borderColor: "#8e44ad", // Purple
           borderWidth: 2,
           fill: false,
         },
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
           position: "bottom",
           title: {
             display: true,
-            text: "Czas (sekundy)",
+            text: "Time (seconds)",
           },
         },
         y: {
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ramChart.update();
     diskChart.update();
 
-    // Odczytaj min i max wartości z wykresów
+    // Read min and max values from the charts
     var cpuMin = Math.min(...cpuChart.data.datasets[0].data);
     var cpuMax = Math.max(...cpuChart.data.datasets[0].data);
     var ramMin = Math.min(...ramChart.data.datasets[0].data);
@@ -132,15 +132,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var diskMin = Math.min(...diskChart.data.datasets[0].data);
     var diskMax = Math.max(...diskChart.data.datasets[0].data);
 
-    // Policz różnice
+    // Calculate differences
     var cpuDiff = cpuMax - cpuMin;
     var ramDiff = ramMax - ramMin;
     var diskDiff = diskMax - diskMin;
 
-    // Wyświetl różnice obok wykresów
-    document.getElementById("cpu-diff").innerText = "Zużycie CPU wzrosło o: " + cpuDiff.toFixed(2) + "%";
-    document.getElementById("ram-diff").innerText = "Zużycie pamięci RAM wzrosło o: " + ramDiff.toFixed(2) + "%";
-    document.getElementById("disk-diff").innerText = "Zużycie Dysku wzrosło o " + diskDiff.toFixed(2) + "%";
+    // Display differences next to the charts
+    document.getElementById("cpu-diff").innerText = "CPU usage increased by: " + cpuDiff.toFixed(2) + "%";
+    document.getElementById("ram-diff").innerText = "RAM usage increased by: " + ramDiff.toFixed(2) + "%";
+    document.getElementById("disk-diff").innerText = "Disk usage increased by " + diskDiff.toFixed(2) + "%";
   };
   socket.on("update_progress", updateCharts);
 });

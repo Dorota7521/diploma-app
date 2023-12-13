@@ -2,7 +2,7 @@ import shutil
 
 def copy_large_file(source_file, destination_file):
     try:
-        # Kopiowanie pliku
+        # copying  the file
         shutil.copy(source_file, destination_file)
         print("Kopiowanie zakończone pomyślnie.")
 

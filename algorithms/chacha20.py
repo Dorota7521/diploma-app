@@ -6,7 +6,7 @@ import os
 def encrypt_chacha20(key, file_path):
     backend = default_backend()
 
-    # Generuj losowy nonce (Number used Once)
+    # Generate a random nonce (Number used Once)
     nonce = os.urandom(16)
 
     cipher = Cipher(algorithms.ChaCha20(key, nonce), mode=None, backend=backend)
@@ -15,10 +15,10 @@ def encrypt_chacha20(key, file_path):
     with open(file_path, 'rb') as file:
         plaintext = file.read()
 
-    # Zaszyfruj tekst jawnego
+    # Encrypt the plaintext
     ciphertext = encryptor.update(plaintext) + encryptor.finalize()
 
-    # Zapisz zaszyfrowane dane do nowego pliku
+    # Save the encrypted data to a new file
     encrypted_file_path = file_path + '.enc_chacha20'
     with open(encrypted_file_path, 'wb') as encrypted_file:
         encrypted_file.write(nonce + ciphertext)
