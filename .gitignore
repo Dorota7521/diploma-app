@@ -1,6 +1,7 @@
 # Ignoruj pliki o nazwie secret_message i dowolnym rozszerzeniu
 secret_message.*
 *.pem
+*output.txt
 
 # Ignoruj katalogi __pycache__
 __pycache__/

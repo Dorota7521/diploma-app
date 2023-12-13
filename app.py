@@ -8,6 +8,9 @@ import os
 from algorithms.aes import encrypt_aes
 from algorithms.rsa import generate_rsa_keypair, save_rsa_key_to_file, load_rsa_key_from_file, encrypt_rsa
 from algorithms.chacha20 import encrypt_chacha20
+from algorithms.copy_large_file import copy_large_file
+from algorithms.process_api_data import process_api_data
+from algorithms.process_file import process_file
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -42,27 +45,35 @@ def start_another_app():
     # Uruchom inną aplikację Pythona po 5 sekundach
     sleep(5)
 
-    # aplikacja szyfrująca aes.py
+    # # aplikacja szyfrująca aes.py
     key = os.urandom(32)
     plik = 'secret_message.txt' #plik do zaszyfrowania
     encrypt_aes(key, plik)  
 
-    #aplikacja szyfrująca rsa.py
+    # #aplikacja szyfrująca rsa.py
     private_key_file = 'private_key.pem'
     if not os.path.exists(private_key_file):
         private_key, public_key = generate_rsa_keypair()
         save_rsa_key_to_file(private_key, private_key_file, password=b'MySecurePassword')
         save_rsa_key_to_file(public_key, 'public_key.pem')
 
-    # # Wczytaj klucz prywatny
+    # # # Wczytaj klucz prywatny
     loaded_private_key = load_rsa_key_from_file(private_key_file, password=b'MySecurePassword')
-
     encrypt_rsa(loaded_private_key, plik)    
 
-    #aplikacja szyfrująca chacha20
+    # #aplikacja szyfrująca chacha20.py
     encrypt_chacha20(key, plik)
     
-    
+    # # aplikacja I/O copy_large_file.py
+    copy_large_file(plik, 'large_file_output.txt')
+
+    # # aplikacja I/O process_api_data.py
+    api_url = "https://jsonplaceholder.typicode.com/users"
+    process_api_data(api_url)
+
+    # aplikacja I/O process_file.py
+    process_file(plik,'process_file_output.txt')
+
     sleep(5)
 
 @app.route('/')
