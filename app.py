@@ -50,29 +50,29 @@ def start_another_app():
     file_to_encrypt = 'secret_message.txt'
     encrypt_aes(key, file_to_encrypt)
 
-    # RSA encryption application
-    private_key_file = 'private_key.pem'
-    if not os.path.exists(private_key_file):
-        private_key, public_key = generate_rsa_keypair()
-        save_rsa_key_to_file(private_key, private_key_file, password=b'MySecurePassword')
-        save_rsa_key_to_file(public_key, 'public_key.pem')
+    # # RSA encryption application
+    # private_key_file = 'private_key.pem'
+    # if not os.path.exists(private_key_file):
+    #     private_key, public_key = generate_rsa_keypair()
+    #     save_rsa_key_to_file(private_key, private_key_file, password=b'MySecurePassword')
+    #     save_rsa_key_to_file(public_key, 'public_key.pem')
 
-    # Load the private key
-    loaded_private_key = load_rsa_key_from_file(private_key_file, password=b'MySecurePassword')
-    encrypt_rsa(loaded_private_key, file_to_encrypt)
+    # # Load the private key
+    # loaded_private_key = load_rsa_key_from_file(private_key_file, password=b'MySecurePassword')
+    # encrypt_rsa(loaded_private_key, file_to_encrypt)
 
-    # ChaCha20 encryption application
-    encrypt_chacha20(key, file_to_encrypt)
+    # # ChaCha20 encryption application
+    # encrypt_chacha20(key, file_to_encrypt)
 
-    # I/O application copy_large_file.py
-    copy_large_file(file_to_encrypt, 'large_file_output.txt')
+    # # I/O application copy_large_file.py
+    # copy_large_file(file_to_encrypt, 'large_file_output.txt')
 
-    # I/O application process_api_data.py
-    api_url = "https://jsonplaceholder.typicode.com/users"
-    process_api_data(api_url)
+    # # I/O application process_api_data.py
+    # api_url = "https://jsonplaceholder.typicode.com/users"
+    # process_api_data(api_url)
 
-    # I/O application process_file.py
-    process_file(file_to_encrypt, 'process_file_output.txt')
+    # # I/O application process_file.py
+    # process_file(file_to_encrypt, 'process_file_output.txt')
 
     sleep(5)
 
@@ -93,5 +93,5 @@ if __name__ == '__main__':
     start_app_thread = threading.Thread(target=start_another_app)
     start_app_thread.start()
 
-    # Run the Flask-SocketIO server
-    socketio.run(app, debug=True)
+    # Run the Flask-SocketIO server on port 8080
+    socketio.run(app, host='0.0.0.0', port=8080, debug=True)
