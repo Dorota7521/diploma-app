@@ -37,7 +37,6 @@ The encryption applications and I/O operations are implemented in Python. Subseq
 
 6. Open your web browser and navigate to the website: [http://localhost:8080](http://localhost:8080) .
 
-On the webpage, you will see the results of CPU, Memory, and Disk usage, along with information on the percentage increase.
 
 ### Docker and docker-compose
 1. Clone the repository to your local machine:
