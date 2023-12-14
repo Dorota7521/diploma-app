@@ -30,7 +30,7 @@ The encryption applications and I/O operations are implemented in Python. Subseq
 
 4. Choose the appropriate line in the start_another_app function in app.py. Comment out the rest of the algorithm functions based on your preference.
 
-5. Run the app.py application using the command:: 
+5. Run the app.py application using the command:
     ```bash
     py .\app.py
     ```
@@ -76,7 +76,39 @@ This will stop and remove the containers.
 If you need to customize any configuration or settings, you can modify the docker-compose.yml file or adjust environment variables in the Dockerfile.
 
 ### Virtual Machines
-ewentualnie ansible, ale raczej wątpię xD
+1. Ensure that you have a virtual machine (VM) with a supported operating system installed. You can use virtualization software like VirtualBox or VMware.
+
+2. Clone the repository to your VM:
+
+   ```bash
+   git clone https://github.com/your-username/diploma-app.git
+
+3. Navigate to the "diploma-app" directory:
+    ```bash
+    cd diploma-app
+    ```
+4. Install Python version 3.12 on your virtual machine and update pip.
+
+5. Install requirements:
+    ```bash
+    py -m pip install -r requirements.txt
+    ```
+
+6. Modify the file size of secret_message.txt in the file.py script. The default size is 100MB.
+
+7. Run the file.py application using the command:
+    ```bash
+    py .\file.py
+    ```
+
+8. Choose the appropriate line in the start_another_app function in app.py. Comment out the rest of the algorithm functions based on your preference.
+
+9. Run the app.py application using the command:
+    ```bash
+    py .\app.py
+    ```
+
+6. Open your web browser and navigate to the website: [http://your-vm-ip:8080](http://your-vm-ip:8080).
 
 ## Application Functionality
 The application operates in several steps. Firstly, the file.py application is used to generate a text file of a specified size. Subsequently, the app.py application retrieves the IP of the process it is using. This process ID (PID) is then passed to the variables cpubar.n, rambar.n, and diskbar.n. These variables gather information on the CPU, Memory, and Disk usage of that specific process. Data is collected approximately every second.
