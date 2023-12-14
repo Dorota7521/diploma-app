@@ -37,8 +37,41 @@ On the webpage, you will see the results of CPU, Memory, and Disk usage, along w
 ewentualnie ansible, ale raczej wątpię xD
 
 ### Docker and docker-compose
-tutaj coś o puszczeniu tym jak są zbudowane Dockerfaile i co się dzieje w pliku .yml, jakie boblioteki są instalowane (requirments.txt)
+1. Clone the repository to your local machine:
 
+    ```bash
+    git clone https://github.com/your-username/awesome-project.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd awesome-project
+    ```
+
+3. Build the Docker image:
+
+    ```bash
+    docker-compose up --build
+    ```
+
+This command will build the Docker image and start the application in a container.
+
+4. Access the application:
+
+    Open your web browser and go to [http://localhost:8080](http://localhost:8080) to view the application.
+
+## Stopping the Application
+
+To stop the running Docker container, use the following command:
+
+```bash
+docker-compose down
+```
+
+This will stop and remove the containers.
+
+If you need to customize any configuration or settings, you can modify the docker-compose.yml file or adjust environment variables in the Dockerfile.
 
 ## Application Functionality
 The application operates in several steps. Firstly, the file.py application is used to generate a text file of a specified size. Subsequently, the app.py application retrieves the IP of the process it is using. This process ID (PID) is then passed to the variables cpubar.n, rambar.n, and diskbar.n. These variables gather information on the CPU, Memory, and Disk usage of that specific process. Data is collected approximately every second.
