@@ -52,10 +52,11 @@ def start_another_app():
 
     # RSA encryption application
     private_key_file = 'private_key.pem'
+    #public_key_file = 'public_key.pem'
     if not os.path.exists(private_key_file):
         private_key, public_key = generate_rsa_keypair()
         save_rsa_key_to_file(private_key, private_key_file, password=b'MySecurePassword')
-        save_rsa_key_to_file(public_key, 'public_key.pem')
+        #save_rsa_key_to_file(public_key, public_key_file)
 
     # Load the private key
     loaded_private_key = load_rsa_key_from_file(private_key_file, password=b'MySecurePassword')
@@ -69,7 +70,9 @@ def start_another_app():
 
     # I/O application process_api_data.py
     api_url = "https://jsonplaceholder.typicode.com/users"
-    process_api_data(api_url)
+    #api_url = "https://api.publicapis.org/entries"
+    output_file = 'output.json'
+    process_api_data(api_url, output_file)
 
     # I/O application process_file.py
     process_file(file_to_encrypt, 'process_file_output.txt')
