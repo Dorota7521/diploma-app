@@ -16,26 +16,26 @@ The encryption applications and I/O operations are implemented in Python. Subseq
 
 ## Launching Applications 
 ### Local PC
-To begin, you need to install Python version 3.12. Next, update pip. In the terminal, navigate to the "inz-app" directory and execute the command: 
-```bash
-py -m pip install requirements.txt
-```
+1. To begin, you need to install Python version 3.12. Next, update pip. In the terminal, navigate to the "diploma-app" directory and execute the command: 
+    ```bash
+    py -m pip install requirements.txt
+    ```
 
-Afterwards, modify the file size of secret_message.txt in the file.py script (default is 100MB).
+2. Modify the file size of secret_message.txt in the file.py script. The default size is 100MB.
 
-In the next step, run the file.py application using the command:
-```bash
-py .\file.py
-```
+3. Run the file.py application using the command:
+    ```bash
+    py .\file.py
+    ```
 
-Then, choose the appropriate line in the start_another_app function in app.py. This line corresponds to the algorithm you want to use. Comment out the rest of the algorithm functions.
+4. Choose the appropriate line in the start_another_app function in app.py. Comment out the rest of the algorithm functions based on your preference.
 
-The next step is to run the app.py application using the command: 
-```bash
-py .\app.py
-```
+5. Run the app.py application using the command:: 
+    ```bash
+    py .\app.py
+    ```
 
-Then, navigate to the website: [http://localhost:8080](http://localhost:8080) .
+6. Open your web browser and navigate to the website: [http://localhost:8080](http://localhost:8080) .
 
 On the webpage, you will see the results of CPU, Memory, and Disk usage, along with information on the percentage increase.
 
