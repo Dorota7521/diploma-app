@@ -8,3 +8,11 @@ services:
       - "8080:8080"
     volumes:
       - .:/app
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '2048M'
+        reservations:
+          cpus: '0.5'
+          memory: '1024M'
