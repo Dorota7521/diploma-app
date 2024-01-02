@@ -12,18 +12,12 @@
 <body>
     <div class="container">
         <h1 class="progress-label">Real-Time Progress Charts</h1>
-        <div class="progress-chart" id="cpu-chart-container">
-            <canvas id="cpu-chart"></canvas>
-            <div id="cpu-diff"></div>
+        <div class="chart-container">
+            <canvas id="combined-chart" width="800" height="400"></canvas>
         </div>
-        <div class="progress-chart" id="ram-chart-container">
-            <canvas id="ram-chart"></canvas>
-            <div id="ram-diff"></div>
-        </div>
-        <div class="progress-chart" id="disk-chart-container">
-            <canvas id="disk-chart"></canvas>
-            <div id="disk-diff"></div>
-        </div>
+        <div id="cpu-diff"></div>
+        <div id="ram-diff"></div>
+        <div id="disk-diff"></div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

@@ -38,10 +38,7 @@ body {
 }
 
 
-/* Additional styles for each progress chart */
-#cpu-chart-container label,
-#ram-chart-container label,
-#disk-chart-container label {
+#combined-chart label {
   display: block;
   margin-bottom: 5px;
 }
